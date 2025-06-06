@@ -39,7 +39,7 @@ window.onload = () => {
 
   if (fgSlides.length > 0) {
     fgSlides[0].classList.add('show');
-    setInterval(showFgSlides, 3000);
+    setInterval(showFgSlides, 2000);
   }
 };
 
