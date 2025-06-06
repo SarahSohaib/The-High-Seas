@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The High Seas 🏴‍☠️</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>The High Seas 🏴‍☠️</h1>
+    <p class="tagline">Sail into the world of streaming — whether you're broke or boujee.</p>
+    
+    <div class="question-box">
+      <h2>Do you have money to pay for your entertainment?</h2>
+      <div class="buttons">
+        <button onclick="showPaid()">Yes, take me to the premium stuff 💳</button>
+        <button onclick="showFree()">No, I'm sailing the seas 🏴‍☠️</button>
+      </div>
+    </div>
+
+    <div class="link-section" id="paid-section">
+      <h3>⚓ Paid Streaming Sites</h3>
+      <ul>
+        <li><a href="https://www.netflix.com" target="_blank">Netflix</a></li>
+        <li><a href="https://www.primevideo.com" target="_blank">Amazon Prime Video</a></li>
+        <li><a href="https://www.hotstar.com" target="_blank">Disney+ Hotstar</a></li>
+        <li><a href="https://www.jio.com/jio-cinema" target="_blank">JioCinema</a></li>
+        <!-- Add more -->
+      </ul>
+    </div>
+
+    <div class="link-section" id="free-section">
+      <h3>🏴 Free Streaming Spots</h3>
+      <ul>
+        <li><a href="https://hianime.to" target="_blank">HiAnime (Anime)</a></li>
+        <li><a href="https://hdtodayz.to/" target="_blank">HDToday</a></li>
+        <li><a href="https://myflixer.cx/" target="_blank">MyFlixer</a></li>
+        <!-- Add more of your personal faves -->
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function showPaid() {
+      document.getElementById('paid-section').style.display = 'block';
+      document.getElementById('free-section').style.display = 'none';
+    }
+
+    function showFree() {
+      document.getElementById('free-section').style.display = 'block';
+      document.getElementById('paid-section').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
