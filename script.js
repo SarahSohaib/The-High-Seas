@@ -6,35 +6,44 @@ let bgSlides;
 let fgIndex = 0;
 let fgSlides;
 
-//when gifs will be visible
+// When GIF buttons become visible (after 1 second)
 window.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
-    document.querySelector('.buttons').classList.add('visible');
-  }, 1000); // 2000ms = 2 seconds
+    // Show the buttons container
+    const buttons = document.querySelector('.buttons');
+    if (buttons) buttons.classList.add('visible');
+
+    // Show the gif button if it exists
+    const gifBtn = document.querySelector('.gif-button');
+    if (gifBtn) {
+      gifBtn.classList.remove('hidden');
+      gifBtn.classList.add('visible');
+    }
+  }, 1000); // after 1 second delay
 });
 
-// Change background image every 3 seconds
+// Change background image every 2 seconds
 function nextBgSlide() {
   bgSlides.forEach(slide => slide.classList.remove('active'));
+  bgCurrent = (bgCurrent + 1) % bgSlides.length; // update index first
   bgSlides[bgCurrent].classList.add('active');
-  bgCurrent = (bgCurrent + 1) % bgSlides.length;
 }
 
-// Change foreground image every 3 seconds (optional)
+// Change foreground image every 2 seconds (optional)
 function showFgSlides() {
   fgSlides.forEach(slide => slide.classList.remove('show'));
+  fgIndex = (fgIndex + 1) % fgSlides.length; // update index first
   fgSlides[fgIndex].classList.add('show');
-  fgIndex = (fgIndex + 1) % fgSlides.length;
 }
 
-// Initialize on window load
+// Initialize slideshows on window load
 window.onload = () => {
   bgSlides = document.querySelectorAll('.bg-slide');
-  fgSlides = document.querySelectorAll('.slide-image');
+  fgSlides = document.querySelectorAll('.slide-image'); // optional, use if you have these elements
 
   if (bgSlides.length > 0) {
     bgSlides[0].classList.add('active');
-    setInterval(nextBgSlide, 3000);
+    setInterval(nextBgSlide, 2000);
   }
 
   if (fgSlides.length > 0) {
@@ -43,27 +52,51 @@ window.onload = () => {
   }
 };
 
-// Show/hide galleries and hide buttons on click
+// Show/hide galleries and hide buttons on click (assuming you have these galleries and back buttons in your HTML)
 function showPaid() {
-  document.getElementById('paid-gallery').classList.remove('hidden');
-  document.getElementById('free-gallery').classList.add('hidden');
-  document.getElementById('paid-back').classList.remove('hidden');
-  document.getElementById('free-back').classList.add('hidden');
-  document.querySelector('.buttons').classList.add('hidden-buttons');
+  const paidGallery = document.getElementById('paid-gallery');
+  const freeGallery = document.getElementById('free-gallery');
+  const paidBack = document.getElementById('paid-back');
+  const freeBack = document.getElementById('free-back');
+  const buttons = document.querySelector('.buttons');
+
+  if (paidGallery && freeGallery && paidBack && freeBack && buttons) {
+    paidGallery.classList.remove('hidden');
+    freeGallery.classList.add('hidden');
+    paidBack.classList.remove('hidden');
+    freeBack.classList.add('hidden');
+    buttons.classList.add('hidden-buttons');
+  }
 }
 
 function showFree() {
-  document.getElementById('free-gallery').classList.remove('hidden');
-  document.getElementById('paid-gallery').classList.add('hidden');
-  document.getElementById('free-back').classList.remove('hidden');
-  document.getElementById('paid-back').classList.add('hidden');
-  document.querySelector('.buttons').classList.add('hidden-buttons');
+  const paidGallery = document.getElementById('paid-gallery');
+  const freeGallery = document.getElementById('free-gallery');
+  const paidBack = document.getElementById('paid-back');
+  const freeBack = document.getElementById('free-back');
+  const buttons = document.querySelector('.buttons');
+
+  if (paidGallery && freeGallery && paidBack && freeBack && buttons) {
+    freeGallery.classList.remove('hidden');
+    paidGallery.classList.add('hidden');
+    freeBack.classList.remove('hidden');
+    paidBack.classList.add('hidden');
+    buttons.classList.add('hidden-buttons');
+  }
 }
 
 function goBack() {
-  document.getElementById('paid-gallery').classList.add('hidden');
-  document.getElementById('free-gallery').classList.add('hidden');
-  document.getElementById('paid-back').classList.add('hidden');
-  document.getElementById('free-back').classList.add('hidden');
-  document.querySelector('.buttons').classList.remove('hidden-buttons');
+  const paidGallery = document.getElementById('paid-gallery');
+  const freeGallery = document.getElementById('free-gallery');
+  const paidBack = document.getElementById('paid-back');
+  const freeBack = document.getElementById('free-back');
+  const buttons = document.querySelector('.buttons');
+
+  if (paidGallery && freeGallery && paidBack && freeBack && buttons) {
+    paidGallery.classList.add('hidden');
+    freeGallery.classList.add('hidden');
+    paidBack.classList.add('hidden');
+    freeBack.classList.add('hidden');
+    buttons.classList.remove('hidden-buttons');
+  }
 }
